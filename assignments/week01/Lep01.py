@@ -1,0 +1,11 @@
+name = input("what is")
+age = input("what is")
+email = input("what is")
+phone = input("what is")
+hobby = input("what is")
+
+print("Your profile")
+print("Name: " , name)
+print("Age: " , age)
+print("Email: " , email)
+print("Hobby: " , hobby)
