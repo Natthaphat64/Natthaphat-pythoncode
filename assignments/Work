@@ -1,0 +1,123 @@
+# Exercise 1: Personal Profile Creator
+print("=== Personal Profile Creator ===")
+# โปรแกรมสร้างโปรไฟล์ส่วนตัว
+name = input("กรอกชื่อ-นามสกุล: ")
+age = input("กรอกอายุ: ")
+email = input("กรอกอีเมล: ")
+phone = input("กรอกเบอร์โทร: ")
+hobby = input("กรอกงานอดิเรก: ")
+
+print("\n--- ข้อมูลส่วนตัว ---")
+print("ชื่อ:", name)
+print("อายุ:", age)
+print("อีเมล:", email)
+print("เบอร์โทร:", phone)
+print("งานอดิเรก:", hobby)
+
+
+# Exercise 2: Shopping Receipt
+print("\n=== Shopping Receipt ===")
+# โปรแกรมคิดเงินสินค้า
+item = input("ชื่อสินค้า: ")
+price = float(input("ราคาต่อชิ้น: "))
+qty = int(input("จำนวนชิ้น: "))
+total = price * qty
+print(f"คุณซื้อ {item} จำนวน {qty} ชิ้น รวมเป็นเงิน {total} บาท")
+
+
+# Exercise 3: Student Grade Calculator
+print("\n=== Student Grade Calculator ===")
+# โปรแกรมคิดเกรดจากคะแนนสอบ 3 ครั้ง
+s1 = float(input("คะแนนสอบครั้งที่ 1: "))
+s2 = float(input("คะแนนสอบครั้งที่ 2: "))
+s3 = float(input("คะแนนสอบครั้งที่ 3: "))
+avg = (s1 + s2 + s3) / 3
+print(f"คะแนนเฉลี่ย: {avg:.2f}")
+
+
+# Exercise 4: Time Converter
+print("\n=== Time Converter ===")
+# แปลงนาทีเป็นชั่วโมงกับนาที
+minutes = int(input("กรอกจำนวนนาที: "))
+hours = minutes // 60
+mins = minutes % 60
+print(f"{minutes} นาที เท่ากับ {hours} ชั่วโมง {mins} นาที")
+
+
+# Exercise 5: Circle Calculator
+print("\n=== Circle Calculator ===")
+# คำนวณเส้นผ่านศูนย์กลาง เส้นรอบวง และพื้นที่วงกลม
+r = float(input("รัศมีวงกลม: "))
+pi = 3.14159
+d = 2 * r
+c = 2 * pi * r
+a = pi * r * r
+print(f"Diameter = {d}")
+print(f"Circumference = {c:.2f}")
+print(f"Area = {a:.2f}")
+
+
+# Exercise 6: String Manipulator
+print("\n=== String Manipulator ===")
+# โปรแกรมจัดการข้อความ
+text = input("กรอกประโยค: ")
+print("ตัวพิมพ์ใหญ่:", text.upper())
+print("ตัวพิมพ์เล็ก:", text.lower())
+print("จำนวนตัวอักษร:", len(text))
+print("จำนวนคำ:", len(text.split()))
+
+
+# Exercise 7: Password Strength Checker (Basic)
+print("\n=== Password Strength Checker ===")
+# โปรแกรมตรวจสอบความยาวรหัสผ่าน
+pwd = input("กรอกรหัสผ่าน: ")
+print("ความยาวรหัสผ่าน:", len(pwd))
+if len(pwd) > 8:
+    print("รหัสผ่านแข็งแรง")
+else:
+    print("รหัสผ่านสั้นไป")
+print("ตัวอักษรแรก:", pwd[0])
+print("ตัวอักษรสุดท้าย:", pwd[-1])
+
+
+# Exercise 8: Distance Calculator
+print("\n=== Distance Calculator ===")
+# โปรแกรมคำนวณระยะทาง = ความเร็ว × เวลา
+speed = float(input("กรอกความเร็ว (ไมล์/ชม.): "))
+time = float(input("กรอกเวลา (ชม.): "))
+distance = speed * time
+print(f"คุณเดินทางได้ {distance} ไมล์")
+
+
+# Exercise 9: Age in Days
+print("\n=== Age in Days Calculator ===")
+# โปรแกรมแปลงอายุเป็นวัน ชั่วโมง นาที
+years = int(input("กรอกอายุ (ปี): "))
+days = years * 365
+hours = days * 24
+minutes = hours * 60
+print(f"คุณมีอายุประมาณ {days} วัน หรือ {hours} ชั่วโมง หรือ {minutes} นาที")
+
+
+# Exercise 10: Bill Splitter
+print("\n=== Bill Splitter ===")
+# โปรแกรมหารบิลอาหาร
+bill = float(input("ยอดบิลทั้งหมด: "))
+people = int(input("จำนวนคน: "))
+tip_percent = float(input("เปอร์เซ็นต์ทิป: "))
+tip = bill * (tip_percent / 100)
+total = bill + tip
+per_person = total / people
+print(f"ทิปทั้งหมด: {tip:.2f}")
+print(f"รวมทั้งสิ้น: {total:.2f}")
+print(f"แต่ละคนจ่าย: {per_person:.2f}")
+
+
+# Bonus Challenge: Mad Libs Game
+print("\n=== Mad Libs Game ===")
+# เกมใส่คำให้เป็นเรื่องตลก
+noun1 = input("กรอกคำนาม: ")
+verb = input("กรอกคำกริยา: ")
+adj = input("กรอกคำคุณศัพท์: ")
+noun2 = input("กรอกคำนามอีกคำ: ")
+print(f"เรื่องตลก: เจ้า {adj} {noun1} {verb} ข้าม {noun2}")

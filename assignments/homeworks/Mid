@@ -1,0 +1,39 @@
+
+print("\n=== Student Grade Calculator ===")
+Student_name = input("Name: ")
+midterm = float(input("Midterm: "))
+final = float(input("Final: "))
+homework = float(input("Homework: "))
+
+total_grade = (midterm * 0.3) + (final * 0.4) + (homework * 0.3)
+print(f"{Student_name} total grade = {total_grade:.2f}")
+
+
+def check_grade(score):
+    if score >= 80:
+        return "very good"
+    elif score >= 70:
+        return "good"
+    elif score >= 60:
+        return "normal"
+    else:
+        return "fail"
+
+# ทดสอบ
+test_scores = [85, 75, 65, 55]
+for s in test_scores:
+    print(f"Score {s}: {check_grade(s)}")
+
+--
+
+scores = [75,85,92,67,88,95,73,84]
+
+max_score = max(scores)           # ค่าสูงสุด
+min_score = min(scores)           # ค่าต่ำสุด
+avg_score = sum(scores) / len(scores)  # ค่าเฉลี่ย
+count_above_80 = sum(1 for s in scores if s > 80)  # จำนวนคนที่ได้ > 80
+
+print("Max score:", max_score)
+print("Min score:", min_score)
+print("Average score:", avg_score)
+print("Number of students > 80:", count_above_80)

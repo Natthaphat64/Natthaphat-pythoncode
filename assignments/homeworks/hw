@@ -1,0 +1,440 @@
+# โปรแกรมคำนวณ BMI
+def bmi(weight, height):
+    # คำนวณค่า BMI = น้ำหนัก / ส่วนสูงยกกำลัง 2
+    value = weight / (height ** 2)
+
+    # ตรวจสอบเกณฑ์
+    if value < 18.5:
+        status = "น้ำหนักน้อย"
+    elif value < 23:
+        status = "ปกติ"
+    elif value < 25:
+        status = "ท้วม"
+    elif value < 30:
+        status = "อ้วน"
+    else:
+        status = "อ้วนมาก"
+
+    return value, status
+
+# ตัวอย่างการเรียกใช้งาน
+w = float(input("ป้อนน้ำหนัก(kg): "))
+h = float(input("ป้อนส่วนสูง(m): "))
+b, s = bmi(w, h)
+print("BMI =", round(b,2), "=>", s)
+
+---------
+
+# โปรแกรม ATM แบบง่าย
+def atm():
+    balance = 0  # เริ่มต้นมียอดเงิน 0
+    while True:
+        print("\n===== ATM MENU =====")
+        print("1. ฝากเงิน")
+        print("2. ถอนเงิน")
+        print("3. เช็คยอดเงิน")
+        print("4. ออก")
+
+        choice = input("เลือกเมนู: ")
+
+        if choice == "1":
+            amt = float(input("จำนวนเงินฝาก: "))
+            balance += amt
+            print("ฝากสำเร็จ! ยอดเงิน =", balance)
+        elif choice == "2":
+            amt = float(input("จำนวนเงินถอน: "))
+            if amt > balance:
+                print("ยอดเงินไม่พอ!")
+            else:
+                balance -= amt
+                print("ถอนสำเร็จ! ยอดเงิน =", balance)
+        elif choice == "3":
+            print("ยอดเงินปัจจุบัน =", balance)
+        elif choice == "4":
+            print("ออกจากระบบ")
+            break
+        else:
+            print("กรุณาเลือกเมนูใหม่")
+
+atm()
+
+----------
+
+# ฟังก์ชันเช็คคำ Palindrome
+def is_palindrome(word):
+    # แปลงตัวอักษรทั้งหมดเป็นตัวพิมพ์เล็กเพื่อไม่ให้มีผล
+    w = word.lower()
+    # ถ้าอ่านจากซ้ายไปขวา == ขวาไปซ้าย
+    return w == w[::-1]
+
+txt = input("ป้อนคำ: ")
+if is_palindrome(txt):
+    print(txt, "เป็น Palindrome")
+else:
+    print(txt, "ไม่ใช่ Palindrome")
+
+----------
+
+# โปรแกรมหาผลรวม ค่าเฉลี่ย สูงสุด ต่ำสุด
+nums = []  # ลิสต์เก็บตัวเลข
+for i in range(5):
+    n = int(input("ป้อนตัวเลขที่ {}: ".format(i+1)))
+    nums.append(n)
+
+print("ตัวเลขทั้งหมด:", nums)
+print("ผลรวม =", sum(nums))
+print("ค่าเฉลี่ย =", sum(nums)/len(nums))
+print("ค่าสูงสุด =", max(nums))
+print("ค่าต่ำสุด =", min(nums))
+
+-----------
+
+# โปรแกรมจัดการรายชื่อนักเรียน
+def student_manager():
+    students = []  # ลิสต์เก็บชื่อ
+
+    while True:
+        print("\n===== Student Menu =====")
+        print("1. เพิ่มชื่อ")
+        print("2. แสดงทั้งหมด")
+        print("3. ค้นหาชื่อ")
+        print("4. ออก")
+
+        ch = input("เลือกเมนู: ")
+
+        if ch == "1":
+            name = input("ป้อนชื่อ: ")
+            students.append(name)
+            print("เพิ่มสำเร็จ")
+        elif ch == "2":
+            print("รายชื่อนักเรียน:", students)
+        elif ch == "3":
+            name = input("ค้นหาชื่อ: ")
+            if name in students:
+                print(name, "พบในระบบ")
+            else:
+                print(name, "ไม่พบในระบบ")
+        elif ch == "4":
+            break
+        else:
+            print("กรุณาเลือกใหม่")
+
+student_manager()
+
+----------
+
+# โปรแกรมอ่านไฟล์คะแนนและหาค่าเฉลี่ย
+def avg_score():
+    total = 0
+    count = 0
+    with open("score.txt", "r", encoding="utf-8") as f:
+        for line in f:
+            score = int(line.strip())
+            total += score
+            count += 1
+
+    print("คะแนนทั้งหมด:", count, "ค่าเฉลี่ย =", total/count)
+
+avg_score()
+
+-----------
+
+# โปรแกรมคำนวณเกรด
+score = int(input("ป้อนคะแนน: "))
+
+if score >= 80:
+    grade = "A"
+elif score >= 70:
+    grade = "B"
+elif score >= 60:
+    grade = "C"
+elif score >= 50:
+    grade = "D"
+else:
+    grade = "F"
+
+print("เกรด =", grade)
+
+------------
+
+import random
+# โปรแกรมทายเลข
+secret = random.randint(1, 10)   # สุ่มเลข 1-10
+while True:
+    guess = int(input("ทายเลข (1-10): "))
+    if guess == secret:
+        print("ถูกต้อง! เลขคือ", secret)
+        break
+    elif guess < secret:
+        print("น้อยไป")
+    else:
+        print("มากไป")
+
+------------
+
+# สมุดโทรศัพท์แบบง่าย
+def contact_book():
+    contacts = {}
+
+    while True:
+        print("\n=== Contact Book ===")
+        print("1. เพิ่มเบอร์")
+        print("2. ค้นหา")
+        print("3. แสดงทั้งหมด")
+        print("4. ออก")
+        ch = input("เลือกเมนู: ")
+
+        if ch == "1":
+            name = input("ชื่อ: ")
+            phone = input("เบอร์: ")
+            contacts[name] = phone
+        elif ch == "2":
+            name = input("ค้นหาชื่อ: ")
+            if name in contacts:
+                print(name, ":", contacts[name])
+            else:
+                print("ไม่พบ")
+        elif ch == "3":
+            for k,v in contacts.items():
+                print(k, ":", v)
+        elif ch == "4":
+            break
+        else:
+            print("เลือกเมนูใหม่")
+
+contact_book()
+
+------------
+
+# อ่านไฟล์ score.txt แล้วหาค่าเฉลี่ย
+total = 0
+count = 0
+with open("score.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        score = int(line.strip())
+        total += score
+        count += 1
+
+print("จำนวนคะแนน =", count)
+print("ค่าเฉลี่ย =", total/count)
+
+------------
+
+# เลขคู่-คี่
+n = int(input("ป้อนตัวเลข: "))
+if n % 2 == 0:
+    print(n, "เป็นเลขคู่")
+else:
+    print(n, "เป็นเลขคี่")
+
+-------------
+
+#ตรวจสอบ Leap Year
+year = int(input("ป้อนปี ค.ศ.: "))
+if (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):
+    print(year, "เป็น Leap Year")
+else:
+    print(year, "ไม่ใช่ Leap Year")
+
+--------------
+
+#ภาษีเงินเดือน
+salary = float(input("เงินเดือน: "))
+if salary <= 15000:
+    tax = 0
+elif salary <= 30000:
+    tax = salary * 0.05
+else:
+    tax = salary * 0.1
+print("ต้องเสียภาษี =", tax)
+
+--------------
+
+#สูตรคูณแม่ 2–12
+for i in range(2, 13):
+    for j in range(1, 13):
+        print(i, "x", j, "=", i*j)
+    print()
+
+-------------
+
+#หาค่า max/min
+def my_max(a, b):
+    return a if a > b else b
+
+x = int(input("x: "))
+y = int(input("y: "))
+print("ค่ามากสุด =", my_max(x,y))
+
+------------
+
+#ตรวจสอบจำนวนเฉพาะ
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+num = int(input("ตัวเลข: "))
+print("เป็นจำนวนเฉพาะ?", is_prime(num))
+
+-------------
+
+#ยกกำลัง
+def power(x, y):
+    return x**y
+print("2^3 =", power(2,3))
+
+------------
+
+#นับสระ
+txt = input("ข้อความ: ").lower()
+vowels = "aeiou"
+count = 0
+for ch in txt:
+    if ch in vowels:
+        count += 1
+print("จำนวนสระ =", count)
+
+------------
+
+#นับคำในประโยค
+sentence = input("ประโยค: ")
+words = sentence.split()
+print("มี", len(words), "คำ")
+
+------------
+
+#Username + Password
+user = input("Username: ")
+pw = input("Password: ")
+if user == "admin" and pw == "1234":
+    print("เข้าสู่ระบบสำเร็จ")
+else:
+    print("ผิดพลาด")
+
+------------
+
+#ค่าเฉลี่ย
+nums = []
+for i in range(5):
+    n = int(input("ตัวเลข: "))
+    nums.append(n)
+
+print("ค่าเฉลี่ย =", sum(nums)/len(nums))
+
+-------------
+
+#หาตัวเลขซ้ำ
+nums = [1,2,3,2,4,1,5]
+dup = []
+for n in nums:
+    if nums.count(n) > 1 and n not in dup:
+        dup.append(n)
+print("ตัวเลขที่ซ้ำ =", dup)
+
+--------------
+
+#เรียงลำดับ
+nums = [5,1,9,3,7]
+nums.sort()
+print("เรียงจากน้อยไปมาก:", nums)
+
+--------------
+
+#รวมลิสต์
+a = [1,2,3]
+b = [4,5,6]
+c = a + b
+print(c)
+
+--------------
+
+#ร้านค้า
+menu = {"กาแฟ": 40, "ชา": 30, "น้ำส้ม": 25}
+order = input("เลือกสินค้า: ")
+if order in menu:
+    print("ราคา =", menu[order])
+else:
+    print("ไม่มีสินค้า")
+
+--------------
+
+#Student Manager
+students = {"A001": "Ann", "A002": "Ball"}
+code = input("รหัสนักศึกษา: ")
+if code in students:
+    print("ชื่อนักศึกษา:", students[code])
+else:
+    print("ไม่พบข้อมูล")
+
+---------------
+
+#Stock สินค้า
+stock = {"apple": 10, "banana": 5, "mango": 0}
+item = input("สินค้า: ")
+if stock[item] > 0:
+    print(item, "มีของเหลือ", stock[item])
+else:
+    print(item, "หมดแล้ว")
+
+----------------
+
+#บวกคะแนน
+scores = {"Ann": 50, "Ball": 70}
+name = input("เพิ่มคะแนนให้ใคร: ")
+add = int(input("เพิ่มกี่คะแนน: "))
+scores[name] += add
+print(scores)
+
+----------------
+
+#Dictionary แปลงเดือน
+months = {1:"มกราคม",2:"กุมภาพันธ์",3:"มีนาคม"}
+n = int(input("เลขเดือน: "))
+print("เดือนคือ", months.get(n,"ไม่พบ"))
+
+----------------
+
+#เกมทายเลข
+import random
+num = random.randint(1,10)
+while True:
+    guess = int(input("ทายเลข: "))
+    if guess == num:
+        print("ถูกต้อง!")
+        break
+    elif guess < num:
+        print("น้อยไป")
+    else:
+        print("มากไป")
+
+-----------------
+
+#เป่ายิ้งฉุบ
+import random
+choices = ["ค้อน","กรรไกร","กระดาษ"]
+user = input("เลือก: ")
+comp = random.choice(choices)
+print("คอมพิวเตอร์เลือก:", comp)
+if user == comp:
+    print("เสมอ")
+elif (user=="ค้อน" and comp=="กรรไกร") or \
+     (user=="กรรไกร" and comp=="กระดาษ") or \
+     (user=="กระดาษ" and comp=="ค้อน"):
+    print("คุณชนะ")
+else:
+    print("คุณแพ้")
+
+------------------
+
+#Quiz Game
+score = 0
+q1 = input("Python เป็นภาษาโปรแกรมหรือไม่? (y/n): ")
+if q1=="y": score+=1
+q2 = input("2+2=4 หรือไม่? (y/n): ")
+if q2=="y": score+=1
+print("ได้คะแนน =", score)
+
